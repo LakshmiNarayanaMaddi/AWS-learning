@@ -1,0 +1,66 @@
+What is CIDR?
+
+CIDR defines the IP address range available inside a VPC or subnet.
+
+It tells AWS:
+
+👉 How many machines (servers, databases, services) your network can support.
+
+🧠 Example CIDR
+10.0.0.0/16
+
+This is called a CIDR Block.
+
+✅ Meaning of 10.0.0.0/16
+
+CIDR has two parts:
+
+IP Address      Network Size
+10.0.0.0        /16
+Part 1 — Network Address (10.0.0.0)
+
+This is the starting address of your private network.
+
+AWS private IP ranges:
+
+10.0.0.0 – 10.255.255.255
+172.16.0.0 – 172.31.255.255
+192.168.0.0 – 192.168.255.255
+
+These are private networks (not accessible from internet).
+
+Part 2 — /16 (Subnet Mask)
+
+/16 tells:
+
+👉 First 16 bits are fixed for network
+👉 Remaining bits are available for hosts.
+
+🔢 How Many IP Addresses?
+
+Formula:
+
+2^(32 - subnet bits)
+
+For /16:
+
+2^(32-16) = 65,536 IP addresses
+
+So:
+
+10.0.0.0 → 10.0.255.255
+
+Your VPC can host ~65K resources.
+
+✅ Common CIDR Sizes
+CIDR	IP Addresses	Usage
+/16	65,536	VPC
+/24	256	Subnet
+/28	16	Small subnet
+🏗 Example VPC Design
+VPC CIDR → 10.0.0.0/16
+
+Subnets:
+10.0.1.0/24  → Public Subnet
+10.0.2.0/24  → Private Subnet
+10.0.3.0/24  → Database Subnet
