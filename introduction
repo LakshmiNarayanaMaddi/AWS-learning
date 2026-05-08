@@ -1,0 +1,143 @@
+Differenct concepts are listed below.We shall discuss one by one
+Below are the core concepts:
+Region
+Availability Zone
+VPC (Virtual Private Cloud)
+Public vs Private Subnet
+Internet Gateway
+Route Tables
+Security Groups
+IAM (Identity & Access Management)
+===================================================
+Main Concepts:
+EC2
+Autoscaling
+Elastic load Balancer
+====================================================
+Storage Service:
+S3
+Elastic Block store
+================================================
+Database Services
+✅ RDS (Relational Database Service)
+
+Used for:
+
+MySQL
+PostgreSQL
+
+You must know:
+
+Create DB instance
+Connect Spring Boot → RDS
+DB Security Groups
+Backup & snapshot
+✅ DynamoDB (Optional but good)
+
+NoSQL database.
+==========================================
+Networking (VERY IMPORTANT FOR INTERVIEWS)
+
+You must understand:
+
+VPC creation
+Public subnet
+Private subnet
+NAT Gateway
+Security Groups vs NACL
+Load balancer routing
+===========================================
+DevOps & CI/CD (HIGHLY EXPECTED)
+
+A Java Full Stack Developer is expected to deploy automatically.
+
+✅ Code Repository
+GitHub / GitLab
+✅ CI/CD Pipeline
+
+Learn integration with:
+
+Jenkins
+AWS CodePipeline
+AWS CodeBuild
+
+Pipeline Example:
+
+Code Push → GitHub
+        ↓
+Jenkins Build
+        ↓
+Run Tests
+        ↓
+Create Docker Image
+        ↓
+Deploy to EC2/ECS
+
+=======================================
+
+Containerization (VERY IMPORTANT NOW)
+✅ Docker
+
+You MUST know:
+
+Dockerfile
+Build image
+Run container
+Spring Boot Dockerization
+✅ ECS / EKS
+
+AWS container services:
+
+ECS → Easy container deployment ✅
+EKS → Kubernetes (advanced)
+
+===================================
+
+Lambda
+Run backend logic without server.
+
+Use cases:
+Email trigger
+File processing
+Scheduled jobs
+✅ API Gateway
+Expose APIs securely.
+
+==========================================================
+9️⃣ Monitoring & Observability
+Companies expect this knowledge now.
+✅ CloudWatch
+You must know:
+Logs
+Metrics
+Alarms
+Example:
+Monitor CPU
+Track API failures
+✅ X-Ray (basic idea)
+Tracing microservices calls.
+=======================================================
+🔟 Security Concepts (VERY IMPORTANT)
+Learn:
+IAM Users
+IAM Roles
+Policies
+Secrets Manager
+Parameter Store
+HTTPS + SSL
+Key Pair authentication
+================================================
+
+React App → S3 + CloudFront
+                ↓
+         Load Balancer
+                ↓
+      Spring Boot Microservices (EC2 / ECS)
+                ↓
+           RDS Database
+                ↓
+      CloudWatch Monitoring
+=========================================================
+
+
+
