@@ -1,0 +1,108 @@
+Stateful vs Stateless — AWS Networking Concept
+📌 Simple Meaning
+Term	Meaning
+Stateful	Remembers previous connection
+Stateless	Does NOT remember connection
+🧠 Real World Example
+Stateful Security (Smart Security Guard)
+
+You enter office:
+
+Guard allows entry ✅
+Guard remembers you
+Exit automatically allowed ✅
+
+👉 Guard remembers session.
+
+= Stateful
+
+Stateless Security (Strict Security Gate)
+
+You enter office:
+
+Entry checked ✅
+Exit checked again separately ✅
+
+👉 No memory of previous action.
+
+= Stateless
+
+🌐 Networking Example
+
+Suppose:
+
+Your laptop calls a backend server.
+
+Client → Server (Request)
+Server → Client (Response)
+✅ Stateful Behavior
+
+If request is allowed, response is automatically allowed.
+
+No extra rule required.
+
+Example (Security Group)
+Inbound Rule:
+Allow Port 8080
+
+Result:
+
+Request allowed ✅
+Response automatically allowed ✅
+
+Because connection state is remembered.
+
+❌ Stateless Behavior
+
+Request and response treated separately.
+
+You must allow both directions manually.
+
+Example (NACL)
+Inbound:
+Allow Port 8080
+
+Outbound:
+Allow Port 1024-65535
+
+If outbound rule missing → response blocked ❌
+
+🔥 AWS Services Comparison
+Service	Stateful / Stateless
+Security Group	✅ Stateful
+NACL	❌ Stateless
+NAT Gateway	Not firewall (N/A)
+📌 Security Group = Stateful
+
+Characteristics:
+
+Remembers traffic session
+Only inbound rule needed usually
+Return traffic auto allowed
+Easier for developers
+Flow
+Request Allowed → Response Automatically Allowed
+📌 NACL = Stateless
+
+Characteristics:
+
+No session memory
+Must configure inbound AND outbound
+More strict network control
+Used by network admins
+Flow
+Request Allowed
+Response Checked Again
+🧠 Easy Memory Trick
+Stateful  → Remembers Conversation
+Stateless → Forgets Conversation
+🏗 Real AWS Traffic Flow
+Internet
+   ↓
+NACL (Stateless Check)
+   ↓
+Security Group (Stateful Check)
+   ↓
+EC2 Instance
+
+Both layers protect your application.
