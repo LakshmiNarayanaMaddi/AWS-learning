@@ -1,0 +1,44 @@
+2. NAT
+✅ Full Form
+
+NAT = Network Address Translation
+
+✅ What is NAT?
+
+NAT allows private servers to access the internet without being publicly exposed.
+
+🧠 Problem Without NAT
+
+Private subnet servers:
+
+Cannot download updates
+Cannot call external APIs
+Cannot install packages
+
+Because:
+
+❌ No internet access.
+
+✅ Solution → NAT Gateway
+Private EC2 → NAT Gateway → Internet
+
+✔ Outgoing internet allowed
+❌ Incoming internet blocked
+
+✅ Why Developers Use NAT
+
+Example:
+
+Spring Boot server needs:
+
+Maven dependencies
+Payment API calls
+Email services
+
+But should NOT be publicly accessible.
+
+👉 NAT solves this.
+
+🔐 Security Benefit
+Backend hidden from internet
+Only outbound communication allowed
