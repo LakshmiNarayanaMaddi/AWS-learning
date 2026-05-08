@@ -1,0 +1,188 @@
+AWS VPC (Virtual Private Cloud) — Developer Guide
+📌 What is a VPC?
+
+A VPC (Virtual Private Cloud) is a private network inside AWS where you deploy and control your cloud resources.
+
+It acts like your own data center network in the cloud.
+
+Inside a VPC, you control:
+
+IP address ranges
+Subnets
+Internet access
+Security rules
+Routing
+Resource isolation
+=============================================================
+🏗 High Level Architecture
+AWS Region
+   └── VPC (Private Network)
+           ├── Public Subnet
+           └── Private Subnet
+=========================================================================
+All AWS services such as EC2, RDS, Load Balancers run inside a VPC.
+
+🧠 Real World Analogy
+Real World	AWS Equivalent
+City	AWS Region
+Gated Community	VPC
+Streets	Subnets
+Houses	EC2 Instances
+Security Gate	Internet Gateway
+===============================================================
+Core VPC Concepts
+1️⃣ CIDR Block (IP Address Range)
+
+Defines IP address range for the VPC.
+
+Example:
+
+10.0.0.0/16
+
+Meaning:
+
+Private network
+Supports ~65,536 IP addresses
+
+Example subnet ranges:
+
+10.0.1.0/24
+10.0.2.0/24
+=========================================================================
+2️⃣ Subnets
+
+A Subnet is a smaller network inside a VPC.
+
+Public Subnet
+Connected to internet
+Used for:
+Load Balancer
+Bastion Host
+Public servers
+Private Subnet
+No direct internet access
+Used for:
+Backend services
+Databases
+Example
+VPC
+ ├── Public Subnet
+ │       └── Load Balancer
+ │
+ └── Private Subnet
+         ├── Spring Boot EC2
+         └── RDS Database
+========================================================
+3️⃣ Internet Gateway (IGW)
+
+Allows communication between VPC and the Internet.
+
+Without Internet Gateway:
+
+No inbound or outbound internet traffic.
+Internet <--> Internet Gateway <--> VPC
+======================================================================
+4️⃣ Route Tables
+
+Defines how network traffic flows.
+
+Example Route:
+
+Destination      Target
+0.0.0.0/0        Internet Gateway
+
+Meaning:
+All external traffic goes to the internet.
+
+Each subnet must be associated with a Route Table.
+=====================================================================================
+
+5️⃣ NAT Gateway
+
+Allows private subnet resources to access internet securely.
+
+Used when:
+
+Servers need updates
+External API calls
+Package installations
+Private EC2 → NAT Gateway → Internet
+
+✔ Outbound internet allowed
+❌ No inbound internet access
+===========================================================================
+
+6️⃣ Security Groups (Instance Firewall)
+
+Security Groups act as a firewall for EC2 instances.
+
+Example Rules:
+
+Inbound:
+Port 22   → SSH Access
+Port 80   → HTTP
+Port 8080 → Spring Boot
+
+Outbound:
+Allow All
+
+Characteristics:
+
+Instance level
+Stateful
+Most commonly used security control
+==============================================================
+7️⃣ Network ACL (NACL)
+
+Subnet-level firewall.
+
+Feature	Security Group	NACL
+Level	Instance	Subnet
+Stateful	Yes	No
+Usage	Common	Rare
+
+Developers mostly work with Security Groups.
+=========================================================================
+
+🧑‍💻 How Developers Use VPC
+
+Typical Java Full Stack Deployment:
+
+Step 1 — Create VPC
+CIDR: 10.0.0.0/16
+Step 2 — Create Subnets
+Subnet	Type	Purpose
+Subnet A	Public	Load Balancer
+Subnet B	Private	Spring Boot Backend
+Subnet C	Private	Database
+Step 3 — Attach Internet Gateway
+
+Enable public access.
+
+Step 4 — Configure NAT Gateway
+
+Allow private backend servers internet access safely.
+
+Step 5 — Deploy Application
+Frontend
+React hosted on S3
+Backend
+Spring Boot deployed on EC2 (Private Subnet)
+Database
+RDS inside Private Subnet
+🏗 Production Architecture (3-Tier Architecture)
+Users
+  ↓
+Application Load Balancer (Public Subnet)
+  ↓
+Spring Boot EC2 (Private Subnet)
+  ↓
+RDS Database (Private Subnet)
+
+================================================
+🔐 Why VPC is Important
+Network isolation
+Secure architecture
+Controlled access
+Compliance requirements
+Enterprise-grade deployment
