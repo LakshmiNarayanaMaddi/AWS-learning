@@ -1,0 +1,70 @@
+NACL
+✅ Full Form
+
+NACL = Network Access Control List
+
+✅ What is NACL?
+
+NACL is a firewall applied at subnet level.
+
+It controls:
+
+Allowed traffic
+Denied traffic
+
+for entire subnet.
+
+🧠 How NACL Works
+Internet
+   ↓
+NACL (Subnet Firewall)
+   ↓
+EC2 Instances
+✅ Example Rules
+ALLOW  HTTP   80
+ALLOW  HTTPS  443
+DENY   ALL OTHER TRAFFIC
+⚡ Stateless Nature
+
+NACL is stateless.
+
+Meaning:
+
+If inbound allowed → outbound must also be allowed separately.
+
+🔥 Security Group vs NACL
+Feature	Security Group	NACL
+Applied To	EC2 Instance	Subnet
+Stateful	✅ Yes	❌ No
+Default Behavior	Allow	Deny
+Used By Developers	Very Often	Rarely Modified
+🏗 Complete Networking Flow
+Internet
+   ↓
+Internet Gateway
+   ↓
+Public Subnet
+   ↓
+Load Balancer
+   ↓
+Private Subnet (NACL)
+   ↓
+Spring Boot EC2 (Security Group)
+   ↓
+Database
+⭐ Interview Questions
+❓ What is CIDR?
+
+Defines IP range of VPC/subnet.
+
+❓ Why use NAT Gateway?
+
+Allows private servers internet access securely.
+
+❓ Difference Between NACL and Security Group?
+Security Group → Instance firewall
+NACL → Subnet firewall
+🚀 Golden Memory Trick
+CIDR → Network Size
+NAT  → Private Internet Access
+NACL → Subnet Firewall
